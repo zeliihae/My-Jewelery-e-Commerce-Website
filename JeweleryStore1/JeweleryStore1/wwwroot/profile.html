@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profilim - Jewelry Shop</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="profile.css">
+   
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1><i class="fas fa-user-circle"></i> Profilim</h1>
+            <a href="index.html" class="back-btn">
+                <i class="fas fa-home"></i>
+                Ana Sayfa
+            </a>
+        </div>
+
+        <div class="profile-layout">
+            <div class="sidebar">
+                <div class="user-info">
+                    <div class="user-avatar">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <div class="user-name" id="userName">Kullanıcı</div>
+                    <div class="user-email" id="userEmail">email@example.com</div>
+                </div>
+
+                <ul class="nav-menu">
+                    <li>
+                        <a class="nav-link active" data-section="orders">
+                            <i class="fas fa-shopping-bag"></i> Siparişlerim
+                        </a>
+                    </li>
+                    <li>
+                        <a class="nav-link" data-section="favorites">
+                            <i class="fas fa-heart"></i> Favorilerim
+                        </a>
+                    </li>
+                    <li>
+                        <a class="nav-link" data-section="addresses">
+                            <i class="fas fa-map-marker-alt"></i> Adreslerim
+                        </a>
+                    </li>
+                </ul>
+
+                <button class="logout-btn" id="logoutBtn">
+                    <i class="fas fa-sign-out-alt"></i> Çıkış Yap
+                </button>
+            </div>
+
+            <div class="main-content">
+                <!-- Siparişler Section -->
+                <div id="orders" class="section active">
+                    <h2 class="section-title">Siparişlerim</h2>
+                    <div id="ordersContainer">
+                        <div class="empty-state">
+                            <i class="fas fa-spinner fa-spin"></i>
+                            <h3>Yükleniyor...</h3>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Favoriler Section -->
+                <div id="favorites" class="section">
+                    <h2 class="section-title">Favorilerim</h2>
+                    <div id="favoritesContainer" class="favorites-grid">
+                        <div class="empty-state">
+                            <i class="fas fa-spinner fa-spin"></i>
+                            <h3>Yükleniyor...</h3>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Adresler Section -->
+                <div id="addresses" class="section">
+                    <h2 class="section-title">Adreslerim</h2>
+                    <div id="addressesContainer">
+                        <div class="empty-state">
+                            <i class="fas fa-spinner fa-spin"></i>
+                            <h3>Yükleniyor...</h3>
+                        </div>
+                    </div>
+                    <button class="add-address-btn" id="addAddressBtn">
+                        <i class="fas fa-plus"></i> Yeni Adres Ekle
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Address Modal -->
+    <div class="modal" id="addressModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Adres Ekle/Düzenle</h2>
+                <button class="close-modal">&times;</button>
+            </div>
+            <form id="addressForm">
+                <div class="form-group">
+                    <label>Adres Başlığı *</label>
+                    <input type="text" id="addressTitle" placeholder="Ev, İş, vb." required>
+                </div>
+                <div class="form-group">
+                    <label>Ad Soyad *</label>
+                    <input type="text" id="addressName" required>
+                </div>
+                <div class="form-group">
+                    <label>Telefon *</label>
+                    <input type="tel" id="addressPhone" placeholder="0555 555 55 55" required>
+                </div>
+                <div class="form-group">
+                    <label>Şehir *</label>
+                    <input type="text" id="addressCity" required>
+                </div>
+                <div class="form-group">
+                    <label>İlçe *</label>
+                    <input type="text" id="addressDistrict" required>
+                </div>
+                <div class="form-group">
+                    <label>Adres *</label>
+                    <textarea id="addressDetail" placeholder="Mahalle, sokak, bina no, daire no" required></textarea>
+                </div>
+                <div style="display: flex; gap: 10px;">
+                    <button type="button" class="btn-secondary close-modal" style="flex: 1;">İptal</button>
+                    <button type="submit" class="btn-primary" style="flex: 1;">Kaydet</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <li>
+    <a class="nav-link" data-section="settings">
+        <i class="fas fa-cog"></i> Hesap Ayarları
+    </a>
+</li>
+
+<div id="settings" class="section">
+    <h2 class="section-title">Hesap Ayarları</h2>
+    
+    <div class="settings-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px;">
+        <div class="settings-card" style="background: white; padding: 20px; border-radius: 12px;">
+            <h3>Profil Bilgileri</h3>
+            <div class="form-group">
+                <label>Ad Soyad</label>
+                <input type="text" id="updateUserName">
+            </div>
+            <div class="form-group">
+                <label>Telefon</label>
+                <input type="text" id="updateUserPhone">
+            </div>
+            <button onclick="updateProfile()" class="btn-primary" style="width: 100%;">Bilgileri Kaydet</button>
+        </div>
+
+        <div class="settings-card" style="background: white; padding: 20px; border-radius: 12px;">
+            <h3>Şifre Değiştir</h3>
+            <form id="passwordForm" onsubmit="event.preventDefault(); changePassword();">
+                <div class="form-group">
+                    <label>Mevcut Şifre</label>
+                    <input type="password" id="oldPassword" required>
+                </div>
+                <div class="form-group">
+                    <label>Yeni Şifre</label>
+                    <input type="password" id="newPassword" required>
+                </div>
+                <div class="form-group">
+                    <label>Yeni Şifre (Tekrar)</label>
+                    <input type="password" id="confirmPassword" required>
+                </div>
+                <button type="submit" class="btn-primary" style="width: 100%; background: #2c3e50;">Şifreyi Güncelle</button>
+            </form>
+        </div>
+    </div>
+</div>
+<script src="script.js"></script>
+    <script src="profile.js"></script>
+</body>
+</html>

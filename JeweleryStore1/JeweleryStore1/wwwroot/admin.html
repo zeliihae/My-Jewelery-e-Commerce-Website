@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <title>Admin Panel - Jewelry Shop</title>
+  <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <div class="logo">
+      <i class="fas fa-gem"></i>
+      <h2>Admin Panel</h2>
+    </div>
+    <nav class="sidebar-nav">
+      <a href="#dashboard" class="nav-link active" data-section="dashboard">
+        <i class="fas fa-chart-line"></i>
+        <span>Dashboard</span>
+      </a>
+      <a href="#products" class="nav-link" data-section="products">
+        <i class="fas fa-box"></i>
+        <span>Ürünler</span>
+      </a>
+      <a href="#categories" class="nav-link" data-section="categories">
+        <i class="fas fa-tags"></i>
+        <span>Kategoriler</span>
+      </a>
+      <a href="#orders" class="nav-link" data-section="orders">
+        <i class="fas fa-shopping-cart"></i>
+        <span>Siparişler</span>
+      </a>
+      <a href="#users" class="nav-link" data-section="users">
+        <i class="fas fa-users"></i>
+        <span>Kullanıcılar</span>
+      </a>
+      <a href="#coupons" class="nav-link" data-section="coupons">
+        <i class="fas fa-ticket-alt"></i>
+        <span>Kuponlar</span>
+      </a>
+      <a href="index.html" class="nav-link">
+        <i class="fas fa-arrow-left"></i>
+        <span>Siteye Dön</span>
+      </a>
+    </nav>
+  </div>
+
+  <!-- Main Content -->
+  <div class="main-content">
+    <!-- Header -->
+    <header class="admin-header">
+      <div class="header-left">
+        <button class="menu-toggle" id="menuToggle">
+          <i class="fas fa-bars"></i>
+        </button>
+        <h1 class="page-title">Dashboard</h1>
+      </div>
+      <div class="header-right">
+        <div class="user-profile">
+          <span>Admin</span>
+          <i class="fas fa-chevron-down"></i>
+        </div>
+      </div>
+    </header>
+
+    <!-- Dashboard Section -->
+    <section id="dashboard" class="content-section active">
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-icon purple">
+            <i class="fas fa-box"></i>
+          </div>
+          <div class="stat-info">
+            <h3>Toplam Ürün</h3>
+            <p class="stat-number" id="totalProducts">0</p>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon green">
+            <i class="fas fa-shopping-cart"></i>
+          </div>
+          <div class="stat-info">
+            <h3>Siparişler</h3>
+            <p class="stat-number"id="totalOrders">0</p>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon blue">
+            <i class="fas fa-users"></i>
+          </div>
+          <div class="stat-info">
+            <h3>Kullanıcılar</h3>
+            <p class="stat-number" id="totalUsers">0</p>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon orange">
+            <i class="fas fa-lira-sign"></i>
+          </div>
+          <div class="stat-info">
+            <h3>Toplam Gelir</h3>
+            <p class="stat-number" id="totalRevenue">0.00 ₺</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Products Section -->
+    <section id="products" class="content-section">
+      <div class="section-header">
+        <h2>Ürün Yönetimi</h2>
+        <button class="btn-primary" id="addProductBtn">
+          <i class="fas fa-plus"></i> Add new product
+        </button>
+      </div>
+
+      <div class="products-table-container">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Resim</th>
+              <th>Ürün Adı</th>
+              <th>Kategori</th>
+              <th>Fiyat</th>
+              <th>Stok</th>
+              <th>İşlemler</th>
+            </tr>
+          </thead>
+          <tbody id="productsTableBody">
+            <!-- Ürünler buraya dinamik eklenecek -->
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Categories Section -->
+    <section id="categories" class="content-section">
+      <div class="section-header">
+        <h2>Kategori Yönetimi</h2>
+        <button class="btn-primary" id="addCategoryBtn">
+          <i class="fas fa-plus"></i> Yeni Kategori Ekle
+        </button>
+      </div>
+
+      <div class="categories-grid">
+        <!-- Kategoriler buraya dinamik eklenecek -->
+      </div>
+    </section>
+
+    <!-- Orders Section -->
+    <section id="orders" class="content-section">
+      <div class="section-header">
+        <h2>Sipariş Yönetimi</h2>
+      </div>
+      <div class="orders-table-container">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Sipariş No</th>
+              <th>Müşteri</th>
+              <th>Tarih</th>
+              <th>Tutar</th>
+              <th>Durum</th>
+              <th>İşlemler</th>
+            </tr>
+          </thead>
+          <tbody id="ordersTableBody">
+            <!-- Siparişler buraya dinamik eklenecek -->
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Users Section -->
+    <section id="users" class="content-section">
+      <div class="section-header">
+        <h2>Kullanıcı Yönetimi</h2>
+      </div>
+      <div class="users-table-container">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Ad Soyad</th>
+              <th>Email</th>
+              <th>Kayıt Tarihi</th>
+              <th>Durum</th>
+              <th>İşlemler</th>
+            </tr>
+          </thead>
+          <tbody id="usersTableBody">
+            <tr>
+              <td>Ali Veli</td>
+              <td>ali@example.com</td>
+              <td>01.12.2024</td>
+              <td><span class="status-badge completed">Aktif</span></td>
+              <td>
+                <button class="btn-edit"><i class="fas fa-edit"></i></button>
+                <button class="btn-delete"><i class="fas fa-trash"></i></button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Coupons Section -->
+    <section id="coupons" class="content-section">
+      <div class="section-header">
+        <h2>Kupon Yönetimi</h2>
+        <button class="btn-primary" id="addCouponBtn">
+          <i class="fas fa-plus"></i> Yeni Kupon Ekle
+        </button>
+      </div>
+
+      <div class="coupons-table-container">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Kupon Kodu</th>
+              <th>İndirim</th>
+              <th>Tip</th>
+              <th>Min. Tutar</th>
+              <th>Kullanım</th>
+              <th>Geçerlilik</th>
+              <th>Durum</th>
+              <th>İşlemler</th>
+            </tr>
+          </thead>
+          <tbody id="couponsTableBody">
+            <!-- Kuponlar buraya dinamik eklenecek -->
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </div>
+
+
+
+<div id="orderModal" class="modal">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h2>Sipariş Detayı</h2>
+      <button class="close-modal" data-modal="orderModal">&times;</button>
+    </div>
+    <div class="modal-body" id="orderModalBody">
+      </div>
+  </div>
+</div>
+
+  <!-- Add Product Modal -->
+  <div class="modal" id="productModal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2>Add new product</h2>
+        <button class="close-modal" data-modal="productModal">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form id="productForm">
+          <div class="form-group">
+            <label>Ürün Adı</label>
+            <input type="text" id="productName" required>
+          </div>
+          <div class="form-group">
+            <label>Kategori</label>
+            <select id="productCategory" required>
+              <option value="">Kategori Seçin</option>
+            </select>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Fiyat (₺)</label>
+              <input type="number" id="productPrice" step="0.01" required>
+            </div>
+            <div class="form-group">
+              <label>İndirimli Fiyat (₺)</label>
+              <input type="number" id="productDiscountPrice" step="0.01">
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Stok</label>
+            <input type="number" id="productStock" required>
+          </div>
+          <div class="form-group">
+            <label>Ürün Resmi URL</label>
+            <input type="text" id="productImage" placeholder="product.png">
+          </div>
+          <div class="form-group">
+            <label>Açıklama</label>
+            <textarea id="productDescription" rows="3"></textarea>
+          </div>
+          <div class="modal-actions">
+            <button type="button" class="btn-secondary close-modal" data-modal="productModal">İptal</button>
+            <button type="submit" class="btn-primary">Kaydet</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Add Category Modal -->
+  <div class="modal" id="categoryModal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2>Yeni Kategori Ekle</h2>
+        <button class="close-modal" data-modal="categoryModal">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form id="categoryForm">
+          <div class="form-group">
+            <label>Kategori Adı</label>
+            <input type="text" id="categoryName" required placeholder="Örn: Kolye">
+          </div>
+          <div class="form-group">
+            <label>Font Awesome İkon</label>
+            <input type="text" id="categoryIcon" required placeholder="Örn: fa-gem" value="fa-gem">
+            <small style="color: #95a5a6; display: block; margin-top: 5px;">
+              Font Awesome ikonları için: fa-necklace, fa-ring, fa-gem, fa-hand-sparkles, vb.
+            </small>
+          </div>
+          <div class="modal-actions">
+            <button type="button" class="btn-secondary close-modal" data-modal="categoryModal">İptal</button>
+            <button type="submit" class="btn-primary">Kaydet</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Add Coupon Modal -->
+  <div class="modal" id="couponModal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2>Yeni Kupon Ekle</h2>
+        <button class="close-modal" data-modal="couponModal">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form id="couponForm">
+          <div class="form-group">
+            <label>Kupon Kodu</label>
+            <div style="display: flex; gap: 10px;">
+              <input type="text" id="couponCode" required placeholder="Örn: YILBASI2024" style="flex: 1; text-transform: uppercase;">
+              <button type="button" class="btn-secondary" onclick="generateCouponCode()">
+                <i class="fas fa-random"></i> Rastgele
+              </button>
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <label>İndirim Tipi</label>
+            <select id="couponType" required>
+              <option value="percentage">Yüzde (%)</option>
+              <option value="fixed">Sabit Tutar (₺)</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label>İndirim Miktarı</label>
+            <input type="number" id="couponDiscount" required min="1" placeholder="Örn: 10">
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label>Minimum Sepet Tutarı (₺)</label>
+              <input type="number" id="couponMinAmount" step="0.01" min="0" value="0">
+            </div>
+            <div class="form-group">
+              <label>Maksimum Kullanım</label>
+              <input type="number" id="couponMaxUses" min="1" placeholder="Sınırsız için boş bırakın">
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label>Başlangıç Tarihi</label>
+              <input type="date" id="couponStartDate" required>
+            </div>
+            <div class="form-group">
+              <label>Bitiş Tarihi</label>
+              <input type="date" id="couponEndDate" required>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>Açıklama</label>
+            <textarea id="couponDescription" rows="2" placeholder="Kupon hakkında açıklama..."></textarea>
+          </div>
+
+          <div class="modal-actions">
+            <button type="button" class="btn-secondary close-modal" data-modal="couponModal">İptal</button>
+            <button type="submit" class="btn-primary">Kaydet</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <script src="admin.js"></script>
+</body>
+</html>
