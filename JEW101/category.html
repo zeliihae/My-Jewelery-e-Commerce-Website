@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <title>Kategoriler - Jewelry Shop</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="category.css">
+</head>
+<body>
+
+  <header class="header">
+    <a href="index.html" class="logo">
+      <img src="images/logo.png" alt="logo">
+    </a>
+    <div class="search-form">
+      <input type="text" class="search-input" id="search-box" placeholder="search...">
+      <i class="fas fa-search"></i>
+    </div>
+   <nav class="navbar1">
+    <a href="index.html" class="active" >Home</a>
+   
+        <a href="profile.html" class="nav-link" style="display: none;">
+            <i class="fa-solid fa-user"></i> Profilim
+        </a>
+    
+    <a href="Login.html" >Login</a>
+    <a href="signup.html" >Sign Up</a>
+    <a class="carticon" >My Cart <i class="fa-solid fa-cart-shopping" ></i></a>
+   </nav>
+    <div class="buttons">
+      <button id="search-btn"><i class="fa-solid fa-magnifying-glass"></i></button>
+      <button id="menu-btn"><i class="fa-solid fa-bars"></i></button>
+    </div>
+  </header>
+
+  <div class="basket-model">
+  <div class="basket-items">
+    <i class="fa-solid fa-xmark"></i>
+    <h2>Sepetim</h2>
+    <div class="basket-items-list"></div>
+
+    <div class="basket-total">
+      <!-- Kupon Bölümü -->
+      <div class="coupon-section">
+        <div class="coupon-input-wrapper">
+          <input type="text" 
+                 id="couponInput" 
+                 placeholder="Kupon kodunuz varsa giriniz" 
+                 class="coupon-input"
+                 maxlength="20">
+          <button class="coupon-apply-btn" onclick="applyCoupon()">
+            <i class="fas fa-tag"></i> Uygula
+          </button>
+        </div>
+        <div id="couponMessage" class="coupon-message"></div>
+        <div id="appliedCoupon" class="applied-coupon" style="display: none;">
+          <div class="applied-coupon-info">
+            <i class="fas fa-check-circle"></i>
+            <span id="appliedCouponText"></span>
+          </div>
+          <button class="remove-coupon-btn" onclick="removeCoupon()">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+      </div>
+      <!-- Kupon Bölümü Sonu -->
+      
+      <span class="total">Total : 135Tl</span>
+      <button class="btn1">Checkout</button>
+    </div>
+
+  </div>
+</div>
+
+  <!-- Kategoriler -->
+  <div class="Categories">
+    <nav class="navbar2">
+      <a href="category.html?cat=Kolye">Kolye <i class="fa-solid fa-angle-down"></i></a>
+      <a href="category.html?cat=Bileklik">Bileklik<i class="fa-solid fa-angle-down"></i></a>
+      <a href="category.html?cat=Yüzük">Yüzük<i class="fa-solid fa-angle-down"></i></a>
+      <a href="category.html?cat=Küpe">Küpe<i class="fa-solid fa-angle-down"></i></a>
+      <a href="category.html?cat=Erkek">Erkek<i class="fa-solid fa-angle-down"></i></a>
+      <a href="category.html?cat=Aksesuar">Aksesuar<i class="fa-solid fa-angle-down"></i></a>
+    </nav>
+  </div>
+
+  <!-- Breadcrumb -->
+  <div class="breadcrumb">
+    <a href="index.html"><i class="fas fa-home"></i> Ana Sayfa</a>
+    <span>/</span>
+    <span id="categoryBreadcrumb">Kategori</span>
+  </div>
+
+  <!-- Kategori Header -->
+  <section class="category-header">
+    <div class="category-info">
+      <div class="category-icon-large" id="categoryIcon">
+        <i class="fas fa-gem"></i>
+      </div>
+      <div class="category-text">
+        <h1 id="categoryTitle">Tüm Ürünler</h1>
+        <p id="categoryDescription">En özel koleksiyonlarımızı keşfedin</p>
+        <span class="product-count" id="productCount">0 Ürün</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Filtreler -->
+  <section class="filters-section">
+    <div class="filter-container">
+      <div class="filter-group">
+        <label><i class="fas fa-sort"></i> Sıralama</label>
+        <select id="sortSelect">
+          <option value="default">Varsayılan</option>
+          <option value="price-asc">Fiyat: Düşükten Yükseğe</option>
+          <option value="price-desc">Fiyat: Yüksekten Düşüğe</option>
+          <option value="name-asc">İsim: A-Z</option>
+          <option value="name-desc">İsim: Z-A</option>
+        </select>
+      </div>
+      
+      <div class="filter-group">
+        <label><i class="fas fa-filter"></i> Fiyat Aralığı</label>
+        <div class="price-range">
+          <input type="number" id="minPrice" placeholder="Min">
+          <span>-</span>
+          <input type="number" id="maxPrice" placeholder="Max">
+          <button class="btn-filter" id="applyFilter">Uygula</button>
+        </div>
+      </div>
+
+      <div class="filter-group">
+       
+      </div>
+    </div>
+  </section>
+
+  <!-- Ürünler -->
+  <section class="category-products">
+    <div class="products-grid" id="productsContainer">
+      <!-- Ürünler buraya dinamik eklenecek -->
+    </div>
+    
+    <!-- Ürün bulunamadı mesajı -->
+    <div class="no-products" id="noProducts" style="display: none;">
+      <i class="fas fa-box-open"></i>
+      <h3>Ürün Bulunamadı</h3>
+      <p>Bu kategoride henüz ürün bulunmamaktadır.</p>
+      <a href="index.html" class="btn">Ana Sayfaya Dön</a>
+    </div>
+  </section>
+<div id="receiptModal" class="modal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); z-index: 9999; justify-content: center; align-items: center; padding: 20px;">
+    <div class="modal-content" style="background: white; padding: 0; border-radius: 15px; max-width: 500px; width: 100%; max-height: 90vh; display: flex; flex-direction: column; position: relative; box-shadow: 0 10px 30px rgba(0,0,0,0.5);">
+        
+        <div style="padding: 20px; border-bottom: 1px solid #eee; text-align: center;">
+             <span onclick="closeReceipt()" style="position: absolute; top: 15px; right: 20px; font-size: 30px; cursor: pointer; color: #888; line-height: 1;">&times;</span>
+             <h2 style="color: #8B2F39; margin: 0; font-size: 24px;">Sipariş Faturası</h2>
+        </div>
+
+        <div id="receiptContent" style="padding: 20px; overflow-y: auto; flex: 1; scrollbar-width: thin;">
+            </div>
+
+        <div style="padding: 20px; border-top: 1px solid #eee;">
+            <button onclick="closeReceipt()" style="width: 100%; background: #8B2F39; color: white; padding: 15px; border: none; border-radius: 8px; cursor: pointer; font-weight: 700; font-size: 16px; transition: background 0.3s;">
+                Close
+            </button>
+        </div>
+    </div>
+</div>
+  <!-- Footer -->
+  <section class="footer">
+    <div class="share">
+      <a href="#" class="fab fa-facebook"></a>
+      <a href="#" class="fab fa-twitter"></a>
+      <a href="#" class="fab fa-instagram"></a>
+      <a href="#" class="fab fa-pinterest"></a>
+      <a href="#" class="fab fa-linkedin"></a>
+    </div>
+  </section>
+
+<script src="script.js"></script>
+<script src="category.js"></script>
+<script src="profile.js"></script> 
+ 
+</body>
+</html>
